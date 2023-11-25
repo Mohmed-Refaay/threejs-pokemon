@@ -28,6 +28,7 @@ type TProps = JSX.IntrinsicElements["group"];
 export type TPokeballMethods = {
   playAnimation: () => void;
   reverseAnimation: () => void;
+  playAnimationPercentage: (p: number) => void;
 };
 
 export const Pokeball = forwardRef(function Pokeball(
@@ -63,13 +64,25 @@ export const Pokeball = forwardRef(function Pokeball(
           action.play();
         });
       },
+      playAnimationPercentage(percentage) {
+        Object.values(actions).forEach((action) => {
+          if (!action) return;
+          action.paused = false;
+          action.enabled = true;
+          action.loop = THREE.LoopOnce;
+          action.clampWhenFinished = true;
+          action.time = action.getClip().duration * percentage;
+          action.play();
+          action.paused = true;
+        });
+      },
     }),
     [actions],
   );
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
+      <group name="Scene" rotation-y={Math.PI}>
         <mesh
           name="outside_cover"
           castShadow

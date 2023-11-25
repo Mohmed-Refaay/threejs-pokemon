@@ -1,7 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 
-export function Environment() {
+export function World() {
   const directionLightRef = useRef<THREE.DirectionalLight | null>(
     null,
   );
@@ -27,7 +27,7 @@ export function Environment() {
         position={[2, 2, 0]}
       />
 
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </>
   );
 }
