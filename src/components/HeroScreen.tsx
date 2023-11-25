@@ -15,9 +15,11 @@ export function HeroScreen() {
 
   return (
     <>
-      <h1 className="text-white text-[12vw] font-black relative top-[15%] -translate-y-1/2 z-10">
-        {pokeballData[activeSlide].name}
-      </h1>
+      <div className="text-white text-[12vw] font-black relative top-[15%] -translate-y-1/2 z-10">
+        <h1 className="text-white text-[12vw] font-black">
+          {pokeballData[activeSlide].name}
+        </h1>
+      </div>
 
       <div className="w-full text-white flex items-center justify-between px-10 absolute top-1/2 -translate-y-1/2 z-30">
         <button

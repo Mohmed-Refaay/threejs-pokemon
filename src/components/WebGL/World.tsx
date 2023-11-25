@@ -27,7 +27,7 @@ export function World() {
         position={[2, 2, 0]}
       />
 
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </>
   );
 }

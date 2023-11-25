@@ -75,7 +75,7 @@ export const Model = forwardRef(function Model(
         </mesh>
       </group>
 
-      <Float speed={5}>
+      <Float speed={5} rotationIntensity={0.4}>
         <Pokeball ref={pokemonMethods} />
       </Float>
     </group>

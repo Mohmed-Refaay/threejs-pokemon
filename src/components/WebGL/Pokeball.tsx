@@ -4,7 +4,7 @@ import React, {
   useImperativeHandle,
   useRef,
 } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, Outlines } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
@@ -90,7 +90,9 @@ export const Pokeball = forwardRef(function Pokeball(
           geometry={nodes.outside_cover.geometry}
           material={materials["white-cover"]}
           rotation={[Math.PI / 2, 0, 0]}
-        />
+        >
+          <SharedOutline />
+        </mesh>
         <mesh
           name="Sphere"
           castShadow
@@ -99,7 +101,9 @@ export const Pokeball = forwardRef(function Pokeball(
           material={materials["black-in"]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
-        />
+        >
+          <SharedOutline />
+        </mesh>
         <mesh
           name="Sphere001"
           castShadow
@@ -108,7 +112,9 @@ export const Pokeball = forwardRef(function Pokeball(
           material={materials.button}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.941}
-        />
+        >
+          <SharedOutline />
+        </mesh>
         <mesh
           name="Sphere002"
           castShadow
@@ -118,7 +124,9 @@ export const Pokeball = forwardRef(function Pokeball(
           position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
-        />
+        >
+          <SharedOutline />
+        </mesh>
         <mesh
           name="outside_cover001"
           castShadow
@@ -127,10 +135,17 @@ export const Pokeball = forwardRef(function Pokeball(
           material={materials["red-cover"]}
           position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
-        />
+        >
+          <SharedOutline />
+        </mesh>
       </group>
     </group>
   );
 });
 
 useGLTF.preload("./models/pokeball.glb");
+
+function SharedOutline() {
+  // @ts-ignore
+  return <Outlines thickness={0.03} color="black" />;
+}
