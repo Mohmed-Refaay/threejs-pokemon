@@ -80,6 +80,21 @@ export const Pokeball = forwardRef(function Pokeball(
     [actions],
   );
 
+  // @ts-ignore
+  const toonMaterial = Object.fromEntries(
+    Object.entries(materials).map(([key, value]) => {
+      if (key === "button") {
+        return [key, value];
+      }
+      return [
+        key,
+        new THREE.MeshToonMaterial({
+          color: value.color,
+        }),
+      ];
+    }),
+  );
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene" rotation-y={Math.PI}>
@@ -88,7 +103,7 @@ export const Pokeball = forwardRef(function Pokeball(
           castShadow
           receiveShadow
           geometry={nodes.outside_cover.geometry}
-          material={materials["white-cover"]}
+          material={toonMaterial["white-cover"]}
           rotation={[Math.PI / 2, 0, 0]}
         >
           <SharedOutline />
@@ -98,7 +113,7 @@ export const Pokeball = forwardRef(function Pokeball(
           castShadow
           receiveShadow
           geometry={nodes.Sphere.geometry}
-          material={materials["black-in"]}
+          material={toonMaterial["black-in"]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
         >
@@ -109,7 +124,7 @@ export const Pokeball = forwardRef(function Pokeball(
           castShadow
           receiveShadow
           geometry={nodes.Sphere001.geometry}
-          material={materials.button}
+          material={toonMaterial.button}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.941}
         >
@@ -120,7 +135,7 @@ export const Pokeball = forwardRef(function Pokeball(
           castShadow
           receiveShadow
           geometry={nodes.Sphere002.geometry}
-          material={materials["black-in"]}
+          material={toonMaterial["black-in"]}
           position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
@@ -132,7 +147,7 @@ export const Pokeball = forwardRef(function Pokeball(
           castShadow
           receiveShadow
           geometry={nodes.outside_cover001.geometry}
-          material={materials["red-cover"]}
+          material={toonMaterial["red-cover"]}
           position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
         >
