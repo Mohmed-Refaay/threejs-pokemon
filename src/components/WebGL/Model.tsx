@@ -68,15 +68,15 @@ export const Model = forwardRef(function Model(
 
   return (
     <group {...props} ref={ref}>
-      <group ref={objRef} scale={[0.1, 0.1, 0.1]}>
-        <mesh>
-          <boxGeometry args={[2, 2, 2]} attach="geometry" />
-          <meshStandardMaterial color="hotpink" attach="material" />
-        </mesh>
-      </group>
+      <group ref={objRef} scale={[0.1, 0.1, 0.1]}></group>
 
       <Float speed={5} rotationIntensity={0.4}>
-        <Pokeball ref={pokemonMethods} />
+        <Pokeball
+          onClick={() => {
+            pokemonMethods.current.playAnimation();
+          }}
+          ref={pokemonMethods}
+        />
       </Float>
     </group>
   );

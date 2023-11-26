@@ -83,13 +83,11 @@ export const Pokeball = forwardRef(function Pokeball(
   // @ts-ignore
   const toonMaterial = Object.fromEntries(
     Object.entries(materials).map(([key, value]) => {
-      if (key === "button") {
-        return [key, value];
-      }
       return [
         key,
         new THREE.MeshToonMaterial({
           color: value.color,
+          side: THREE.DoubleSide,
         }),
       ];
     }),
@@ -116,9 +114,7 @@ export const Pokeball = forwardRef(function Pokeball(
           material={toonMaterial["black-in"]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
-        >
-          <SharedOutline />
-        </mesh>
+        ></mesh>
         <mesh
           name="Sphere001"
           castShadow
@@ -139,9 +135,7 @@ export const Pokeball = forwardRef(function Pokeball(
           position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
-        >
-          <SharedOutline />
-        </mesh>
+        ></mesh>
         <mesh
           name="outside_cover001"
           castShadow
