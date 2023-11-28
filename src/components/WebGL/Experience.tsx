@@ -2,7 +2,6 @@
 
 import { Canvas } from "@react-three/fiber";
 import { World } from "./World";
-import { Environment } from "@react-three/drei";
 import { Slider } from "./Slider";
 
 export function Experience() {
@@ -13,12 +12,9 @@ export function Experience() {
         antialias: true,
       }}
       camera={{
-        position: [0, 0, 5],
-        zoom: window.innerWidth / 25,
+        position: [0, 0, 500],
       }}
     >
-      <Environment preset="warehouse" />
-
       <Slider />
 
       <World />

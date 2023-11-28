@@ -132,7 +132,6 @@ export const Pokeball = forwardRef(function Pokeball(
           receiveShadow
           geometry={nodes.Sphere002.geometry}
           material={toonMaterial["black-in"]}
-          position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.934}
         ></mesh>
@@ -142,7 +141,6 @@ export const Pokeball = forwardRef(function Pokeball(
           receiveShadow
           geometry={nodes.outside_cover001.geometry}
           material={toonMaterial["red-cover"]}
-          position={[-0.01, 0.073, 0.959]}
           rotation={[Math.PI / 2, 0, 0]}
         >
           <SharedOutline />

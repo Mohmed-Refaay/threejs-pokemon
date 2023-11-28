@@ -12,7 +12,7 @@ import {
 import { pokeballData } from "@/utils/data";
 
 const vec = new THREE.Vector3();
-const SPACING = 10;
+const SPACING = 15;
 const fullWidth = SPACING * pokeballData.length;
 
 export function Slider() {
@@ -56,6 +56,7 @@ export function Slider() {
               if (!ref) return;
               refs.current[i] = ref;
             }}
+            pokeCharacter={poke.model}
           />
         );
       })}

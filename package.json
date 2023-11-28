@@ -1,7 +1,8 @@
 {
-  "name": "pokeball",
+  "name": "refaay-pokeball-project",
+  "description": "refaay's submission for threejs journey's november challenge",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
