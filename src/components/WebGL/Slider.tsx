@@ -46,7 +46,11 @@ export function Slider() {
     }
   });
 
-  const scale = (width / height) * 35;
+  const isDesktop = width > 768;
+
+  const scale = isDesktop
+    ? (width / height) * 35
+    : (width / height) * 80;
 
   return (
     <group position={[0, 0, 0]} scale={[scale, scale, scale]}>

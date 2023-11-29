@@ -29,7 +29,12 @@ export const Model = forwardRef(function Model(
       },
     }),
   );
-  const scale = (width / height) * 35;
+
+  const isDesktop = width > 768;
+
+  const scale = isDesktop
+    ? (width / height) * 35
+    : (width / height) * 80;
 
   useEffect(() => {
     tl.current
@@ -68,7 +73,7 @@ export const Model = forwardRef(function Model(
       .to(
         objRef.current.position,
         {
-          y: width > 700 ? -height / scale : (-height / scale) * 0.7,
+          y: isDesktop ? -height / scale : (-height / scale) * 0.75,
           duration: 1,
         },
         1,
@@ -88,7 +93,7 @@ export const Model = forwardRef(function Model(
         objRef.current.position,
         {
           duration: 1,
-          x: width > 700 ? (-width * 0.25) / scale : 0,
+          x: isDesktop ? (-width * 0.25) / scale : 0,
         },
         2,
       )
@@ -108,7 +113,16 @@ export const Model = forwardRef(function Model(
         opacity: 1,
         stagger: 0.1,
       });
-  }, [pokemonMethods, width, height, objRef, groupRef, tl, scale]);
+  }, [
+    pokemonMethods,
+    width,
+    height,
+    objRef,
+    groupRef,
+    tl,
+    scale,
+    isDesktop,
+  ]);
 
   useEffect(() => {
     window.addEventListener("wheel", (e) => {
