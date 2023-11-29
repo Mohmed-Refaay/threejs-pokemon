@@ -29,7 +29,7 @@ export function HeroScreen() {
       </button>
 
       {creditsOpen && (
-        <div className="w-full h-screen flex items-center justify-center bg-black bg-opacity-60 font-mono p-2">
+        <div className="w-full h-screen fixed top-0 left-0 flex items-center justify-center bg-black bg-opacity-60 font-mono p-2 z-40">
           <section className="bg-white relative z-40 w-full max-w-lg p-10 border-4 border-black">
             <button
               className="absolute top-5 right-5 text-2xl cursor-pointer"
