@@ -24,9 +24,6 @@ export const Model = forwardRef(function Model(
   const tl = useRef(
     gsap.timeline({
       paused: true,
-      defaults: {
-        ease: "none",
-      },
     }),
   );
 
