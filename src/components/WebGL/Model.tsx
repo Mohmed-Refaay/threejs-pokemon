@@ -54,11 +54,19 @@ export const Model = forwardRef(function Model(
       .to(
         objRef.current.position,
         {
-          duration: 1,
+          duration: 0.3,
+          x: 0,
+        },
+        1,
+      )
+      .to(
+        objRef.current.position,
+        {
+          duration: 0.7,
           x: 0,
           y: 0,
         },
-        0.2,
+        1.3,
       )
       .to(
         objRef.current.scale,
@@ -68,7 +76,7 @@ export const Model = forwardRef(function Model(
           y: 1,
           z: 1,
         },
-        0.2,
+        1,
       )
       .to(
         objRef.current.position,
@@ -76,7 +84,7 @@ export const Model = forwardRef(function Model(
           y: isDesktop ? -height / scale : (-height / scale) * 0.75,
           duration: 1,
         },
-        1,
+        2,
       )
       .to(
         data,
@@ -87,7 +95,7 @@ export const Model = forwardRef(function Model(
             window.scrollTo(0, data.scrollY);
           },
         },
-        1,
+        2,
       )
       .to(
         objRef.current.position,
@@ -95,7 +103,7 @@ export const Model = forwardRef(function Model(
           duration: 1,
           x: isDesktop ? (-width * 0.25) / scale : 0,
         },
-        2,
+        3,
       )
       .to(
         "dl",
@@ -106,7 +114,7 @@ export const Model = forwardRef(function Model(
           stagger: 0.1,
           ease: "power2.in",
         },
-        3,
+        4,
       )
       .to(".point-img", {
         duration: 0.1,
