@@ -4,7 +4,7 @@ import { DetailsSection } from "@/components/DetailsSection";
 
 export default function Home() {
   return (
-    <main className="relative  bg-[#d22b2b]">
+    <main className="relative  bg-[#d22b2b] overflow-hidden">
       <div className="w-full h-full fixed inset-0 z-20">
         <Experience />
       </div>

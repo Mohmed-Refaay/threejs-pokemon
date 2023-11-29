@@ -24,6 +24,9 @@ export const Model = forwardRef(function Model(
   const tl = useRef(
     gsap.timeline({
       paused: true,
+      defaults: {
+        ease: "none",
+      },
     }),
   );
   const scale = (width / height) * 35;
@@ -65,10 +68,10 @@ export const Model = forwardRef(function Model(
       .to(
         objRef.current.position,
         {
-          y: -height / scale,
+          y: width > 700 ? -height / scale : (-height / scale) * 0.7,
           duration: 1,
         },
-        1.2,
+        1,
       )
       .to(
         data,
@@ -79,17 +82,41 @@ export const Model = forwardRef(function Model(
             window.scrollTo(0, data.scrollY);
           },
         },
-        1.2,
+        1,
       )
       .to(
         objRef.current.position,
         {
           duration: 1,
-          x: (-width * 0.25) / scale,
+          x: width > 700 ? (-width * 0.25) / scale : 0,
         },
-        1.2,
-      );
-  }, [pokemonMethods, width, height, objRef, groupRef, tl]);
+        2,
+      )
+      .to(
+        "dl",
+        {
+          duration: 0.3,
+          opacity: 1,
+          translateX: 0,
+          stagger: 0.1,
+          ease: "power2.in",
+        },
+        3,
+      )
+      .to(".point-img", {
+        duration: 0.1,
+        opacity: 1,
+        stagger: 0.1,
+      });
+  }, [pokemonMethods, width, height, objRef, groupRef, tl, scale]);
+
+  useEffect(() => {
+    window.addEventListener("wheel", (e) => {
+      if (e.deltaY < 0 && tl.current.progress() == 1) {
+        tl.current.reverse();
+      }
+    });
+  }, [tl]);
 
   useFrame(() => {
     groupRef.current.rotation.y += 0.01;
