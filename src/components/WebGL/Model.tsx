@@ -112,6 +112,10 @@ export const Model = forwardRef(function Model(
         duration: 0.1,
         opacity: 1,
         stagger: 0.1,
+      })
+      .to(".scroll-up", {
+        duration: 0.1,
+        opacity: 1,
       });
   }, [
     pokemonMethods,
