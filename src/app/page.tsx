@@ -1,14 +1,21 @@
 import { Experience } from "@/components/WebGL/Experience";
 import { HeroScreen } from "@/components/HeroScreen";
+import { DetailsSection } from "@/components/DetailsSection";
 
 export default function Home() {
   return (
-    <main className="relative flex h-[100dvh] flex-col items-center justify-between bg-[#d22b2b] z-0">
-      <div className="w-full h-full absolute inset-0 z-20">
+    <main className="relative  bg-[#d22b2b]">
+      <div className="w-full h-full fixed inset-0 z-20">
         <Experience />
       </div>
 
-      <HeroScreen />
+      <section className="first-section w-full relative h-[100dvh]">
+        <HeroScreen />
+      </section>
+
+      <section className="second-section w-full relative h-[100dvh]">
+        <DetailsSection />
+      </section>
     </main>
   );
 }

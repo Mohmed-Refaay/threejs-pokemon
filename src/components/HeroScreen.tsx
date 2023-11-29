@@ -11,6 +11,7 @@ import Image from "next/image";
 
 // @ts-ignore
 import FPSStats from "react-fps-stats";
+import { DetailsSection } from "./DetailsSection";
 
 export function HeroScreen() {
   const activeSlide = useAtom(activeSlideAtom)[0];
@@ -21,8 +22,8 @@ export function HeroScreen() {
     <>
       <FPSStats />
 
-      <div className="relative top-[15%] -translate-y-1/2 z-10">
-        <h1 className="text-white text-[12vw] font-black text-lightEffect">
+      <div className="relative top-[15%] -translate-y-1/2 z-10 w-full">
+        <h1 className="text-white text-[12vw] font-black text-center text-lightEffect">
           {pokeballData[activeSlide].name}
         </h1>
       </div>

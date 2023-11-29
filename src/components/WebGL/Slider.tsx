@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Model } from "./Model";
 import * as THREE from "three";
-import { useFrame } from "@react-three/fiber";
-import { useControls } from "leva";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useAtom } from "jotai";
 import {
   activeSlideAtom,
@@ -17,6 +16,7 @@ const fullWidth = SPACING * pokeballData.length;
 
 export function Slider() {
   const refs = useRef<THREE.Group[]>([]);
+  const { width, height } = useThree((s) => s.viewport);
   const progress = useAtom(sliderProgressAtom)[0];
   const [activeSlide, setActiveSlider] = useAtom(activeSlideAtom);
   const direction = useAtom(sliderDirectionAtom)[0];
@@ -46,8 +46,10 @@ export function Slider() {
     }
   });
 
+  const scale = (width / height) * 35;
+
   return (
-    <group>
+    <group position={[0, 0, 0]} scale={[scale, scale, scale]}>
       {pokeballData.map((poke, i) => {
         return (
           <Model
