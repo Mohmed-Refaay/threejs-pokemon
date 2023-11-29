@@ -19,10 +19,8 @@ export function HeroScreen() {
 
   return (
     <>
-      <FPSStats />
-
-      <div className="relative top-[15%] -translate-y-1/2 z-10 w-full">
-        <h1 className="text-white text-[15vw] md:text-[12vw] font-black text-center text-lightEffect">
+      <div className="relative top-[15%] -translate-y-1/2 z-10 w-full overflow-hidden">
+        <h1 className="poke-name text-white text-[15vw] md:text-[12vw] font-black text-center text-lightEffect -translate-y-full">
           {pokeballData[activeSlide].name}
         </h1>
       </div>
