@@ -12,15 +12,6 @@ export const pokeballData: {
   attack: number;
 }[] = [
   {
-    name: "Pikachu",
-    model: <Pikachu />,
-    type: "electric",
-    power: 3,
-    speed: 4,
-    defense: 2,
-    attack: 5,
-  },
-  {
     name: "Eevee",
     model: <Evee />,
     type: "normal",
@@ -28,6 +19,15 @@ export const pokeballData: {
     speed: 3,
     defense: 3,
     attack: 4,
+  },
+  {
+    name: "Pikachu",
+    model: <Pikachu />,
+    type: "electric",
+    power: 3,
+    speed: 4,
+    defense: 2,
+    attack: 5,
   },
   {
     name: "Bulbasaur",
@@ -39,15 +39,6 @@ export const pokeballData: {
     attack: 3,
   },
   {
-    name: "Pikachu",
-    model: <Pikachu />,
-    type: "electric",
-    power: 3,
-    speed: 4,
-    defense: 2,
-    attack: 5,
-  },
-  {
     name: "Eevee",
     model: <Evee />,
     type: "normal",
@@ -56,6 +47,16 @@ export const pokeballData: {
     defense: 3,
     attack: 4,
   },
+  {
+    name: "Pikachu",
+    model: <Pikachu />,
+    type: "electric",
+    power: 3,
+    speed: 4,
+    defense: 2,
+    attack: 5,
+  },
+
   {
     name: "Bulbasaur",
     model: <Bulbasaur />,
