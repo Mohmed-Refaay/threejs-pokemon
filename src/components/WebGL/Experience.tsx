@@ -26,6 +26,8 @@ export function Experience() {
 
   useEffect(() => {
     // animate the overlay away
+    window.scrollTo(0, 0);
+
     if (progress < 100) return;
     gsap
       .timeline()
