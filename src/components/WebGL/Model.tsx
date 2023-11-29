@@ -130,6 +130,19 @@ export const Model = forwardRef(function Model(
         tl.current.reverse();
       }
     });
+    let touchStart = 0;
+
+    window.addEventListener("touchstart", (e) => {
+      touchStart = e.touches[0].screenY;
+    });
+
+    window.addEventListener("touchend", (e) => {
+      const touchEnd = e.changedTouches[0].screenY;
+
+      if (touchStart < touchEnd && tl.current.progress() == 1) {
+        tl.current.reverse();
+      }
+    });
   }, [tl]);
 
   useFrame(() => {
