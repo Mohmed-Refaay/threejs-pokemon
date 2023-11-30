@@ -3,9 +3,12 @@ import { Pokeball, TPokeballMethods } from "./gltfs/Pokeball";
 import gsap from "gsap";
 import { Float } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import { useAtom } from "jotai";
+import { activeSlideAtom } from "@/utils/atoms";
 
 type TProps = JSX.IntrinsicElements["group"] & {
   pokeCharacter?: JSX.Element;
+  index: number;
 };
 
 const data = {
@@ -21,6 +24,8 @@ export const Model = forwardRef(function Model(
   const objRef = useRef<THREE.Group>(null!);
   const groupRef = useRef<THREE.Group>(null!);
   const { width, height } = useThree((s) => s.viewport);
+  const activeSlide = useAtom(activeSlideAtom)[0];
+
   const tl = useRef(
     gsap.timeline({
       paused: true,
@@ -171,7 +176,10 @@ export const Model = forwardRef(function Model(
       <Float speed={5} rotationIntensity={0.4}>
         <Pokeball
           ref={pokemonMethods}
-          onClick={() => tl.current.play()}
+          onClick={() => {
+            if (activeSlide != props.index) return;
+            tl.current.play();
+          }}
         />
       </Float>
     </group>

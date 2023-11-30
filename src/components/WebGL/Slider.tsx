@@ -31,7 +31,10 @@ export function Slider() {
       const posIndex = (i + progress + 200000) % pokeballData.length;
       vec.x = posIndex * SPACING - fullWidth / 2;
 
-      if (posIndex === 0 && activeSlide != i) {
+      if (
+        posIndex == Math.floor(group.length / 2) &&
+        activeSlide != i
+      ) {
         setActiveSlider(i);
       }
 
@@ -58,6 +61,7 @@ export function Slider() {
         return (
           <Model
             key={i}
+            index={i}
             ref={(ref) => {
               if (!ref) return;
               refs.current[i] = ref;
