@@ -8,16 +8,31 @@ import {
 import { pokeballData } from "@/utils/data";
 import { useAtom } from "jotai";
 import Image from "next/image";
-import { useState } from "react";
-
-// @ts-ignore
-import FPSStats from "react-fps-stats";
+import { useEffect, useState } from "react";
+import gsap from "gsap";
 
 export function HeroScreen() {
   const activeSlide = useAtom(activeSlideAtom)[0];
   const setProgress = useAtom(sliderProgressAtom)[1];
   const setDirection = useAtom(sliderDirectionAtom)[1];
   const [creditsOpen, setCreditsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    gsap.timeline().fromTo(
+      ".poke-name span",
+      {
+        opacity: 0,
+        translateY: "-100%",
+      },
+      {
+        duration: 0.3,
+        stagger: 0.04,
+        opacity: 1,
+        translateY: "0%",
+        ease: "power2.inOut",
+      },
+    );
+  }, [activeSlide]);
 
   return (
     <>
@@ -115,14 +130,22 @@ export function HeroScreen() {
       )}
 
       <div className="relative top-[15%] -translate-y-1/2 z-10 w-full overflow-hidden">
-        <h1 className="poke-name text-white text-[15vw] md:text-[12vw] font-black text-center text-lightEffect -translate-y-full">
-          {pokeballData[activeSlide].name}
-        </h1>
+        <h1
+          dangerouslySetInnerHTML={{
+            __html: pokeballData[activeSlide].name
+              .split("")
+              .map((letter) => {
+                return `<span style='display: inline-block;'>${letter}</span>`;
+              })
+              .join(""),
+          }}
+          className="poke-name  text-white text-[15vw] md:text-[12vw] font-black text-center text-lightEffect -translate-y-full"
+        />
       </div>
 
       <div className="w-full pointer-events-none text-white flex items-center justify-between px-2 md:px-10 absolute top-1/2 -translate-y-1/2 z-30">
         <button
-          className="transform rotate-90 pointer-events-auto"
+          className="transform rotate-90 pointer-events-auto slider-btn"
           onClick={() => {
             setProgress((c) => c - 1);
             setDirection(-1);
@@ -136,7 +159,7 @@ export function HeroScreen() {
           />
         </button>
         <button
-          className="transform -rotate-90 pointer-events-auto"
+          className="transform -rotate-90 pointer-events-auto slider-btn"
           onClick={() => {
             setProgress((c) => c + 1);
             setDirection(1);

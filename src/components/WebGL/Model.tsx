@@ -40,6 +40,9 @@ export const Model = forwardRef(function Model(
 
   useEffect(() => {
     tl.current
+      .set(".slider-btn", {
+        pointerEvents: "none",
+      })
       .to(
         data,
         {
