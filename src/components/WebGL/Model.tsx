@@ -47,7 +47,7 @@ export const Model = forwardRef(function Model(
         data,
         {
           pokemonProgress: 1,
-          duration: 1,
+          duration: 0.8,
           onUpdate() {
             pokemonMethods.current.playAnimationPercentage(
               data.pokemonProgress,
@@ -61,54 +61,58 @@ export const Model = forwardRef(function Model(
         {
           duration: 0.3,
           x: 0,
+          ease: "none",
         },
-        1,
+        0.8,
       )
       .to(
         objRef.current.position,
         {
-          duration: 0.7,
-          x: 0,
+          duration: 0.5,
           y: 0,
+          ease: "power2.in",
         },
-        1.3,
+        1.1,
       )
       .to(
         objRef.current.scale,
         {
-          duration: 1,
+          duration: 0.5,
           x: 1,
           y: 1,
           z: 1,
         },
-        1,
+        0.9,
       )
       .to(
         objRef.current.position,
         {
           y: isDesktop ? -height / scale : (-height / scale) * 0.75,
-          duration: 1,
+          duration: 0.5,
+          ease: "power2.out",
         },
-        2,
+        1.6,
       )
       .to(
         data,
         {
           scrollY: height,
-          duration: 1,
+          duration: 0.5,
+          ease: "power2.out",
           onUpdate() {
             window.scrollTo(0, data.scrollY);
           },
         },
-        2,
+        1.6,
       )
       .to(
         objRef.current.position,
         {
-          duration: 1,
+          duration: 0.5,
           x: isDesktop ? (-width * 0.25) / scale : 0,
+          ease: "power2.out",
         },
-        3,
+        2.1,
       )
       .to(
         "dl",
@@ -116,15 +120,15 @@ export const Model = forwardRef(function Model(
           duration: 0.3,
           opacity: 1,
           translateX: 0,
-          stagger: 0.1,
-          ease: "power2.in",
+          stagger: 0.03,
+          ease: "power2.out",
         },
-        4,
+        2.3,
       )
       .to(".point-img", {
-        duration: 0.1,
+        duration: 0.2,
         opacity: 1,
-        stagger: 0.1,
+        stagger: 0.04,
       })
       .to(".scroll-up", {
         duration: 0.1,
