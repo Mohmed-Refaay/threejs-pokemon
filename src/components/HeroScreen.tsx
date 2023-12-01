@@ -22,14 +22,14 @@ export function HeroScreen() {
       ".poke-name span",
       {
         opacity: 0,
-        translateY: "-100%",
+        translateY: "-50%",
       },
       {
         duration: 0.3,
         stagger: 0.04,
         opacity: 1,
         translateY: "0%",
-        ease: "power2.inOut",
+        ease: "power4.out",
       },
     );
   }, [activeSlide]);
@@ -129,7 +129,7 @@ export function HeroScreen() {
         </div>
       )}
 
-      <div className="relative top-[15%] -translate-y-1/2 z-10 w-full overflow-hidden">
+      <div className="relative top-[20%] -translate-y-1/2 z-10 w-full overflow-hidden">
         <h1
           dangerouslySetInnerHTML={{
             __html: pokeballData[activeSlide].name
